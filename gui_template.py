@@ -1,3 +1,11 @@
+# ==================================
+# 5/27/2026
+# This file serves as a general template of how Tkinter
+# GUIs are programmed. They are composed of these 3 fundamental components:
+# 1.) A root window object.
+# 2.) Widgets of UI.
+# 3.) A .mainloop() acting on the root window object.
+# ==================================
 # Import module
 from tkinter import *
 
