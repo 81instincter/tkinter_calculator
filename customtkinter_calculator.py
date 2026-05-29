@@ -8,9 +8,15 @@
 # and maybe even include graphing capabilities.
 # =================================================
 from customtkinter import *
-from PIL import Image # For including icons in the app
+from tkinter import END # The END constant allows me to index the end of a CTkTextbox() object for inserting and deleting lines.
+from PIL import Image # For including icons in the app.
 
-expr = "" # Global expression string. Must change later to not be global since global vars are bad practice.
+expr = "" 
+
+# Memory and history of past expressions and their results.
+past_expressions_list = []
+past_results_list = []
+
 img = Image.open("backspace_icon.png")
 
 def press(key):
@@ -22,7 +28,14 @@ def equal():
     global expr
     try: 
         result = str(eval(expr))
+
         display.set(result)
+        past_expressions_list.append(expr)
+        past_results_list.append(result)
+
+        # Display result of inverse function onto the calculator's history screen. 
+        calc_history_box.insert(END, f"{past_expressions_list[-1]}\n\t = {past_results_list[-1]}\n")
+
         expr = ""
     except:
         display.set("error")
@@ -47,6 +60,11 @@ def clear_entry():
         expr = expr[:i+1]
         display.set(expr)
 
+def clear_history():
+    past_expressions_list.clear()
+    past_results_list.clear()
+    calc_history_box.delete("0.0", END) # Clears calculator history display.
+
 def backspace():
     global expr
     if expr:
@@ -55,7 +73,25 @@ def backspace():
 
 def inverse():
     global expr
-    display.set(1/float(eval(expr)))
+    inv_result = 1/float(eval(expr)) 
+
+    past_expressions_list.append("1/" + expr)
+    past_results_list.append(inv_result)
+    display.set(inv_result)
+
+    # Display result of inverse function onto the calculator's history screen. 
+    calc_history_box.insert(END, f"{past_expressions_list[-1]}\n\t = {past_results_list[-1]}\n")
+
+def square():
+    global expr
+    square_result = eval(expr)**2
+
+    past_expressions_list.append(f"({expr})^2")
+    past_results_list.append(square_result)
+    display.set(square_result)
+
+    # Display result of inverse function onto the calculator's history screen. 
+    calc_history_box.insert(END, f"{past_expressions_list[-1]}\n\t = {past_results_list[-1]}\n")
 
 # =================================================
 
@@ -66,12 +102,19 @@ if __name__ == "__main__":
     root.geometry("500x400")
     set_appearance_mode("dark")
 
+    # Displaying the numbers pressed and their results on the top display bar.
     display = StringVar()
     entry = CTkEntry(master=root, textvariable=display, width=500)
     entry.grid(columnspan=4, ipadx=70)
 
+    # Displaying past arithmetic expressions and their results.
+    calc_history_box = CTkTextbox(master=root, 
+                         scrollbar_button_color="#FFCC70",
+                         width=300, height=200, corner_radius=16)
+    calc_history_box.grid(row=2, column=4)
+
     # =================================================
-    # Number buttons: define number button widgets, and set their locations
+    # Number buttons: define number button widgets, and set their locations.
     zero_button = CTkButton(master=root, text="0", 
                             fg_color = "black", bg_color="white",
                             command=lambda: press(0),
@@ -133,7 +176,7 @@ if __name__ == "__main__":
     nine_button.grid(row=6, column=2)
 
     # ==================================
-    # Operator Buttons
+    # Operator Buttons.
     div_button = CTkButton(master=root, text='/',
                             fg_color="black", bg_color="papaya whip",
                             command=lambda: press('/'),
@@ -159,7 +202,7 @@ if __name__ == "__main__":
     plus_button.grid(row=5, column=3)
 
     # ==================================
-    # Other Buttons
+    # Other Buttons.
 
     modulo_button = CTkButton(master=root, text='%',
                             fg_color="black", bg_color="papaya whip",
@@ -178,6 +221,12 @@ if __name__ == "__main__":
                             command=clear,
                             height=50, width=50)
     clear_button.grid(row=1, column=2)
+
+    clear_history_button = CTkButton(master=root, text="Clear History",
+                                     fg_color="black", bg_color="papaya whip",
+                                     command=clear_history,
+                                     height=30, width=50)
+    clear_history_button.grid(row=4, column=4)
 
 # image is there but is just black and blends in with button
     backspace_button = CTkButton(master=root, text="",
@@ -204,6 +253,12 @@ if __name__ == "__main__":
                                 command=inverse, 
                                 height=50, width=50)
     sqr_root_button.grid(row=2, column=2)
+
+    square_button = CTkButton(master=root, text="x^2",
+                              fg_color="black", bg_color="papaya whip",
+                              command=square,
+                              height = 50, width=50)
+    square_button.grid(row=3, column=0)
 
     open_par_button = CTkButton(master=root, text='(', 
                                 fg_color="black", bg_color="papaya whip",
@@ -236,5 +291,5 @@ if __name__ == "__main__":
     equal_button.grid(row=7, column=3)
 
     # =================================================
-    # Run calculator app
+    # Run calculator app.
     root.mainloop()
