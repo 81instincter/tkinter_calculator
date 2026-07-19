@@ -40,12 +40,12 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
    cd tkinter-calculator
 
 2. Install the dependencies:
-```Bash
-pip install -r requirements.txt
+  ```Bash
+  pip install -r requirements.txt
 
 3. Run the application:
-```Bash
-python customtkinter_calculator.py
+  ```Bash
+  python customtkinter_calculator.py
 
 🧠 What I Learned
 This project strengthened my understanding of:
