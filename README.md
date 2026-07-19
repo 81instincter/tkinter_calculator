@@ -47,8 +47,6 @@ pip install -r requirements.txt
 ```Bash
 python customtkinter_calculator.py
 
-📸 Screenshots
-<img src="screenshot.png" alt="Main Interface">
 🧠 What I Learned
 This project strengthened my understanding of:
 
