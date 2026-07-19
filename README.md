@@ -47,16 +47,3 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
   ```Bash
   python customtkinter_calculator.py
 
-### 🧠 What I Learned
-- This project strengthened my understanding of:
-
-- Event-driven programming and GUI state management
-- Working with third-party UI libraries (CustomTkinter)
-- Handling user input, error cases, and history tracking
-- Designing clean, visually appealing interfaces
-
-Future plans include adding algebraic equation solving, graphing capabilities, and support for different number bases (binary, hex, etc.).
-📄 License
-This project is open-sourced under the MIT License.
-
-Made with ❤️ by Elijah Kenning — Computer Science Student
