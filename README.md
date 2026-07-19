@@ -47,7 +47,7 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
   ```Bash
   python customtkinter_calculator.py
 
-🧠 What I Learned
+### 🧠 What I Learned
 This project strengthened my understanding of:
 
 Event-driven programming and GUI state management
