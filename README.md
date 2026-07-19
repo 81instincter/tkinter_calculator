@@ -38,6 +38,7 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
    ```Bash
    git clone https://github.com/81instincter/tkinter-calculator.git
    cd tkinter-calculator
+   ```
 
 2. Install the dependencies:
   ```Bash
@@ -47,4 +48,17 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
 3. Run the application:
   ```Bash
   python customtkinter_calculator.py
+  ```
 
+## 🧠 What I Learned
+This project strengthened my understanding of:
+
+- Event-driven programming and GUI state management
+- Working with third-party UI libraries (CustomTkinter)
+- Handling user input, error cases, and history tracking
+- Designing clean, visually appealing interfaces
+
+Future plans include adding algebraic equation solving, graphing capabilities, and support for different number bases (binary, hex, etc.).
+
+## 📄 License
+This project is open-sourced under the MIT License.
