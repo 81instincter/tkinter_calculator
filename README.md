@@ -42,7 +42,7 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
 2. Install the dependencies:
   ```Bash
   pip install -r requirements.txt
-
+  ```
 
 3. Run the application:
   ```Bash
