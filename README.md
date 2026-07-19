@@ -43,6 +43,7 @@ A modern, sleek calculator GUI built with **CustomTkinter** during my Python cou
   ```Bash
   pip install -r requirements.txt
 
+
 3. Run the application:
   ```Bash
   python customtkinter_calculator.py
